@@ -72,6 +72,11 @@ struct ContentView: View {
             .sheet(isPresented: $showingAddTodoView, content: {
                 AddTodoView()
             })
+            .onAppear {
+                // 启动时加载颜色主题设置
+                let themeColor = themes[self.theme.themeSettings].themeColor
+                theme.currentThemeColor = themeColor
+            }
             .overlay(
                 ZStack {
                     Group {

@@ -62,7 +62,7 @@ struct SettingsView: View {
                             ForEach(themes, id:\.id) { item in
                                 Button {
                                     self.theme.themeSettings = item.id
-                                    UserDefaults.standard.set(self.theme.themeSettings, forKey: "Theme")
+                                    //UserDefaults.standard.set(self.theme.themeSettings, forKey: "Theme")
                                     self.theme.currentThemeColor = item.themeColor
                                     self.isThemeChanged.toggle()
                                 } label: {
