@@ -14,7 +14,7 @@ struct SettingsView: View {
     
     let themes: [Theme] = themeData
     @EnvironmentObject var theme: ThemeSettings
-    @State private var isThemeChanged: Bool = false
+    //@State private var isThemeChanged: Bool = false
     
     var body: some View {
         NavigationView {
@@ -61,10 +61,12 @@ struct SettingsView: View {
                         List {
                             ForEach(themes, id:\.id) { item in
                                 Button {
-                                    self.theme.themeSettings = item.id
+                                    self.theme.themeKey = item.id
                                     //UserDefaults.standard.set(self.theme.themeSettings, forKey: "Theme")
                                     self.theme.currentThemeColor = item.themeColor
-                                    self.isThemeChanged.toggle()
+                                    //self.isThemeChanged.toggle()
+                                    
+                                    presentationMode.wrappedValue.dismiss()
                                 } label: {
                                     HStack {
                                         Image(systemName: "circle.fill")
@@ -87,13 +89,15 @@ struct SettingsView: View {
                         }
                     }
                     .padding(.vertical, 3)
-                    .alert(isPresented: $isThemeChanged) {
-                        Alert(
-                            title: Text("SUCCESS!"),
-                            message: Text("App has been changed to the \(themes[self.theme.themeSettings].themeName). Now close and restart it!"),
-                            dismissButton: .default(Text("OK"))
-                        )
-                    }
+                    /**
+                     .alert(isPresented: $isThemeChanged) {
+                         Alert(
+                             title: Text("SUCCESS!"),
+                             message: Text("App has been changed to the \(themes[self.theme.themeKey].themeName). Now close and restart it!"),
+                             dismissButton: .default(Text("OK"))
+                         )
+                     }
+                     */
 
                     
                     Section {

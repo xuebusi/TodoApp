@@ -70,5 +70,6 @@ struct EmptyListView_Previews: PreviewProvider {
     static var previews: some View {
         EmptyListView()
             .environment(\.colorScheme, .light)
+            .environmentObject(ThemeSettings())
     }
 }

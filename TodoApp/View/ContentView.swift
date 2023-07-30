@@ -74,7 +74,7 @@ struct ContentView: View {
             })
             .onAppear {
                 // 启动时加载颜色主题设置
-                let themeColor = themes[self.theme.themeSettings].themeColor
+                let themeColor = themes[self.theme.themeKey].themeColor
                 theme.currentThemeColor = themeColor
             }
             .overlay(
