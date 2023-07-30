@@ -22,6 +22,9 @@ struct AddTodoView: View {
     @State private var errorTitle: String = ""
     @State private var errorMessage: String = ""
     
+    @EnvironmentObject var theme: ThemeSettings
+    var themes: [Theme] = themeData
+    
     // MARK: - BODY
     
     var body: some View {
@@ -56,7 +59,8 @@ struct AddTodoView: View {
                             .font(.system(size: 24, weight: .bold, design: .default))
                             .padding()
                             .frame(minWidth: 0, maxWidth: .infinity)
-                            .background(Color.blue)
+                            //.background(themes[self.theme.themeSettings].themeColor)
+                            .background(self.theme.currentThemeColor)
                             .cornerRadius(9)
                             .foregroundColor(Color.white)
                     })
@@ -78,8 +82,11 @@ struct AddTodoView: View {
                 Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("确定")))
             }
             
-        } //: VSTACK
-    } //: NAVIGATION
+        } //: NAVIGATION
+        //.accentColor(themes[self.theme.themeSettings].themeColor)
+        .accentColor(self.theme.currentThemeColor)
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
 }
 
 struct AddTodoView_Previews: PreviewProvider {

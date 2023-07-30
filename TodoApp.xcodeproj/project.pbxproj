@@ -19,6 +19,9 @@
 		2BF4623D2A60D3CD00E34AAD /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF4623C2A60D3CD00E34AAD /* Todo.swift */; };
 		2BF4623F2A60D48700E34AAD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF4623E2A60D48700E34AAD /* ViewModel.swift */; };
 		2BF462442A60DC6000E34AAD /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF462432A60DC6000E34AAD /* EmptyListView.swift */; };
+		2BF815952A76638200419C3A /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF815942A76638200419C3A /* ThemeModel.swift */; };
+		2BF815972A7663D300419C3A /* ThemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF815962A7663D300419C3A /* ThemeData.swift */; };
+		2BF815992A76643A00419C3A /* ThemeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF815982A76643A00419C3A /* ThemeSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		2BF4623C2A60D3CD00E34AAD /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		2BF4623E2A60D48700E34AAD /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		2BF462432A60DC6000E34AAD /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		2BF815942A76638200419C3A /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
+		2BF815962A7663D300419C3A /* ThemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeData.swift; sourceTree = "<group>"; };
+		2BF815982A76643A00419C3A /* ThemeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,7 @@
 		2BF4622B2A60D0B400E34AAD /* TodoApp */ = {
 			isa = PBXGroup;
 			children = (
+				2BF815932A76636E00419C3A /* Theme */,
 				2BF462402A60DBE200E34AAD /* View */,
 				2BF462422A60DC0900E34AAD /* ViewModel */,
 				2BF462412A60DBFC00E34AAD /* Model */,
@@ -115,6 +122,16 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		2BF815932A76636E00419C3A /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				2BF815942A76638200419C3A /* ThemeModel.swift */,
+				2BF815962A7663D300419C3A /* ThemeData.swift */,
+				2BF815982A76643A00419C3A /* ThemeSettings.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,11 +169,12 @@
 			};
 			buildConfigurationList = 2BF462242A60D0B400E34AAD /* Build configuration list for PBXProject "TodoApp" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = "zh-Hans";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 2BF462202A60D0B400E34AAD;
 			productRefGroup = 2BF4622A2A60D0B400E34AAD /* Products */;
@@ -186,8 +204,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B54D3282A7501610027065F /* SettingsView.swift in Sources */,
+				2BF815992A76643A00419C3A /* ThemeSettings.swift in Sources */,
 				2B54D32A2A75064E0027065F /* FormRowStaticView.swift in Sources */,
 				2B54D32C2A7508C60027065F /* FormRowLinkView.swift in Sources */,
+				2BF815972A7663D300419C3A /* ThemeData.swift in Sources */,
+				2BF815952A76638200419C3A /* ThemeModel.swift in Sources */,
 				2BF4623F2A60D48700E34AAD /* ViewModel.swift in Sources */,
 				2BF4622F2A60D0B400E34AAD /* ContentView.swift in Sources */,
 				2BF462442A60DC6000E34AAD /* EmptyListView.swift in Sources */,

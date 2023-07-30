@@ -13,6 +13,8 @@ struct TodoAppApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(IconNames())
+                .environmentObject(ThemeSettings())
+                .preferredColorScheme(.light)
         }
     }
 }
