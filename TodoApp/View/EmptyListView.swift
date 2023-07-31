@@ -35,7 +35,7 @@ struct EmptyListView: View {
         ZStack {
             VStack(alignment: .center, spacing: 20) {
                 Image(self.images.randomElement() ?? self.images[0])
-                    .renderingMode(.template)
+//                    .renderingMode(.template)
                     .resizable()
                     .scaledToFit()
                     .frame(minWidth: 256, idealWidth: 280,
@@ -44,13 +44,17 @@ struct EmptyListView: View {
                            alignment: .center)
                     .layoutPriority(1)
                     //.foregroundColor(themes[self.theme.themeSettings].themeColor)
-                    .foregroundColor(self.theme.currentThemeColor)
+                    //.foregroundColor(self.theme.currentThemeColor)
+                    .overlay {
+                        self.theme.currentThemeColor
+                            .blendMode(.color)
+                    }
                 
                 Text(self.tips.randomElement() ?? self.tips[0])
                     .layoutPriority(0.5)
                     .font(.system(.headline, design: .rounded))
                     //.foregroundColor(themes[self.theme.themeSettings].themeColor)
-                    .foregroundColor(self.theme.currentThemeColor)
+                    .foregroundColor(self.theme.currentThemeColor.opacity(0.8))
             }
             .padding(.horizontal)
             .opacity(isAnimated ? 1 : 0)
