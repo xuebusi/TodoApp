@@ -11,7 +11,7 @@ struct AddTodoView: View {
     // MARK: - PROPERTIES
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var vm: ViewModel
+    @Environment(\.managedObjectContext) var viewContext
     
     @State private var name: String = ""
     @State private var priority: String = "中"
@@ -46,7 +46,11 @@ struct AddTodoView: View {
                     
                     Button(action: {
                         if self.name != "" {
-                            vm.save(todo: Todo(name: self.name, priority: self.priority))
+                            let todoTask = TodoTask(context: viewContext)
+                            todoTask.id = UUID()
+                            todoTask.name = self.name
+                            todoTask.priority = self.priority
+                            try? viewContext.save()
                         } else {
                             self.errorShowing = true
                             self.errorTitle = "名称无效"

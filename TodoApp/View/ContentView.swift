@@ -13,25 +13,25 @@ struct ContentView: View {
     
     @State private var showingAddTodoView: Bool = false
     @State private var showingSettingsView: Bool = false
-    @StateObject var vm: ViewModel = ViewModel()
     @State private var animatingButton: Bool = false
     
     @EnvironmentObject var theme: ThemeSettings
     var themes: [Theme] = themeData
     
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(sortDescriptors: []) private var todos: FetchedResults<TodoTask>
+    
     var body: some View {
         NavigationView {
             ZStack {
                 List {
-                    ForEach(vm.todos, id: \.self) { todo in
+                    ForEach(todos, id: \.self) { todo in
                         HStack {
                             Circle()
                                 .frame(width: 12, height: 12, alignment: .center)
                                 .foregroundColor(self.colorize(priority: todo.priority ?? "中"))
                             Text(todo.name ?? "未知")
                                 .fontWeight(.semibold)
-                                //.lineLimit(1)
-                            
                             Spacer()
                             
                             Text(todo.priority ?? "未知")
@@ -65,7 +65,7 @@ struct ContentView: View {
                         })
                 )
                 
-                if vm.todos.isEmpty {
+                if todos.isEmpty {
                     EmptyListView()
                 }
             } //: ZSTACK
@@ -116,7 +116,6 @@ struct ContentView: View {
                 , alignment: .bottom
             )
         } //: NAVIGATION
-        .environmentObject(vm)
         .environmentObject(theme)
         .navigationViewStyle(StackNavigationViewStyle())
     }
@@ -124,8 +123,10 @@ struct ContentView: View {
     
     private func deleteTodo(at offsets: IndexSet) {
         for index in offsets {
-            vm.todos.remove(at: index)
+            let todo = todos[index]
+            viewContext.delete(todo)
         }
+        try? viewContext.save()
     }
     
     private func colorize(priority: String) -> Color {
