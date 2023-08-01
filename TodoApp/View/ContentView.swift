@@ -19,7 +19,7 @@ struct ContentView: View {
     var themes: [Theme] = themeData
     
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(sortDescriptors: []) private var todos: FetchedResults<TodoTask>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) private var todos: FetchedResults<TodoTask>
     
     var body: some View {
         NavigationView {
